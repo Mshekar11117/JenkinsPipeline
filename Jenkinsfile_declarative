@@ -1,0 +1,37 @@
+pipeline{
+    agent any
+    stages{
+        stage ('Download code from Git'){
+            steps{
+                echo "building pipeline1"
+                build 'pipeline_Job1'
+            }
+        }
+        
+        stage ('Build piepline 2'){
+            steps{
+                echo "building pipeline 2"
+                build 'pipeline_Job2'
+            }
+        }
+        
+        stage ('Build pipeline 3'){
+            steps{
+                echo "building pipeline 2"
+                build 'pipeline_Job3'
+            }
+        }
+        
+        stage ('Testing') {
+            steps{
+                echo "Triggering test build"
+            }
+        }
+        
+        stage('Release') {
+            step{
+                echo "Deploy and Release build"
+            }
+        }
+    }
+}
